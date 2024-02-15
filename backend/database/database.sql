@@ -8,3 +8,5 @@ CREATE TABLE `usuario` (
 )
 
 insert into usuario(usuario,contrasena,rango,status)value("Edgar","1234","Admin","1");
+insert into usuario(usuario,contrasena,rango,status)value("Sergio","4321","Admin","1");
+insert into usuario(usuario,contrasena,rango,status)value("Emmanuel","1212","Admin","1");

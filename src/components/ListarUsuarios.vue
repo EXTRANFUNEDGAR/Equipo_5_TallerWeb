@@ -2,7 +2,8 @@
     <div>
         
 
-        <div v-for="usuario in usuarios" :key="usuario.id_usuario">
+        
+        <div >
 
 
 
@@ -17,7 +18,7 @@
                     <th>status</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody v-for="usuario in usuarios" :key="usuario.id_usuario">
                 <tr>
                     <td>{{ usuario.id_usuario }}</td>
                     <td>{{ usuario.usuario }}</td>
