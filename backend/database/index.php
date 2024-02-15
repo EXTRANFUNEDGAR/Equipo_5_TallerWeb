@@ -36,7 +36,7 @@ if(isset($_POST["insertar"])){
     $contrasena=$data->$contrasena;
         if(($contrasena!="")&&($usuario!="")){
             
-    $sqlusuarios = mysqli_query($conexionBD,"INSERT INTO usuario(usuario,contrasena,rango,status) VALUES('$nombre','$correo','user','1') ");
+    $sqlusuarios = mysqli_query($conexionBD,"INSERT INTO usuario(usuario,contrasena,rango,status) VALUES('$nombre','$contrasena','user','1') ");
     echo json_encode(["success"=>1]);
         }
     exit();

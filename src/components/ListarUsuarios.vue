@@ -16,6 +16,8 @@
                     <th>Contrasena</th>
                     <th>rango</th>
                     <th>status</th>
+                    <th>Editar</th>
+                    
                 </tr>
             </thead>
             <tbody v-for="usuario in usuarios" :key="usuario.id_usuario">
@@ -25,6 +27,8 @@
                     <td>{{ usuario.contrasena }}</td>
                     <td>{{ usuario.rango }}</td>
                     <td>{{ usuario.status }}</td>
+                    <td><router-link to="/editar">Editar</router-link></td>
+                    
                 </tr>
             </tbody>
         </table>
