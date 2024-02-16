@@ -1,5 +1,5 @@
 <template>
-    <div class="cen">
+    <div align="center">
         <div class="carta">
 
 <h1>LOGIN</h1>
