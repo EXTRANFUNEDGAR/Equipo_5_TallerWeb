@@ -14,6 +14,7 @@ CREATE TABLE multimedia (
     duracion VARCHAR(10),
     clasificacion VARCHAR(50),
     genero VARCHAR(20),
+    calificacion INT(10),
     id_usuario INT,
     PRIMARY KEY (id_mul),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
