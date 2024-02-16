@@ -1,38 +1,47 @@
 <template>
-  <header >
-<label>Hola</label>
-
-    </header>
-  <nav>
-    <router-link to="/">Home</router-link> |
+  <header>
+    <label></label>
+  </header>
+  <nav class="navbar">
+    <router-link to="/">Inicio</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/registro">Registro</router-link> |
     <router-link to="/login">Login</router-link> |
-    <router-link to="/Listar">listar</router-link> |
-    <router-link to="/editar">Ediatr</router-link> |
+    <router-link to="/Listar">Listar</router-link> |
+    <router-link to="/editar">Editar</router-link> |
   </nav>
-  <router-view/>
+  <router-view />
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Estilos para el encabezado y la barra de navegación */
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+.navbar {
+  background-color: #f2f2f2;
+  overflow: hidden;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #333;
   text-align: center;
-  color: #2c3e50;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-nav {
-  padding: 30px;
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.router-link-exact-active {
+  background-color: #4CAF50;
+  color: white;
 }
 </style>
