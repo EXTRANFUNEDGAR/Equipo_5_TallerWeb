@@ -16,19 +16,24 @@ $data = json_decode(file_get_contents("php://input"));
 $usuario = $data->usuario;
 $contrasena = $data->contrasena;
 
+$response = [];
+
 if ($contrasena != "" && $usuario != "") {
     $sqlusuarios = "INSERT INTO usuario(usuario, contrasena, rango, status) VALUES ('$usuario','$contrasena','user','1')";
 
     if ($conexionBD->query($sqlusuarios) === TRUE) {
-        echo json_encode(["success" => 1]);
+        $response["success"] = 1;
     } else {
-        echo json_encode(["error" => "Error al insertar usuario: " . $conexionBD->error]);
+        $response["error"] = "Error al insertar usuario: " . $conexionBD->error;
     }
 } else {
-    echo json_encode(["error" => "Nombre de usuario y contraseña no pueden estar vacíos"]);
+    $response["error"] = "Nombre de usuario y contraseña no pueden estar vacíos";
 }
 
-$conexionBD->close();
+// Asegúrate de que solo estás enviando JSON como respuesta
+echo json_encode($response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
+$conexionBD->close();
 exit();
+
 ?>
