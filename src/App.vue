@@ -3,12 +3,14 @@
     <label></label>
   </header>
   <nav class="navbar">
-    <router-link to="/">Inicio</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/registro">Registro</router-link> |
-    <router-link to="/login">Login</router-link> |
-    <router-link to="/Listar">Listar</router-link> |
-    <router-link to="/editar">Editar</router-link> |
+    <router-link to="/">Inicio</router-link> 
+    <router-link to="/about">About</router-link> 
+    <router-link to="/registro">Registro</router-link> 
+    
+    <router-link to="/login">Login</router-link> 
+    <router-link to="/Listar">Listar</router-link> 
+    <router-link to="/editar">Editar</router-link> 
+  
   </nav>
   <router-view />
 </template>
@@ -16,7 +18,7 @@
 <style>
 /* Estilos para el encabezado y la barra de navegación */
 header {
-  background-color: #333;
+  background-color: #305472;
   color: white;
   padding: 10px;
 }
@@ -41,7 +43,7 @@ header {
 }
 
 .router-link-exact-active {
-  background-color: #4CAF50;
+  background-color: #4c82af;
   color: white;
 }
 </style>
