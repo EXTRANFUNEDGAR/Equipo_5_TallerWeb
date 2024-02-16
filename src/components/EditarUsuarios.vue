@@ -33,7 +33,7 @@
             },
             methods:{
                 obtenerifois(){
-                    consultarUsuarios(){
+                    
                 fetch('http://localhost/atras/?consultar=').then(respuesta=>respuesta.json()).then((datosRespuesta)=>{
                     console.log(datosRespuesta)
                     this.usuarios=[]
@@ -45,7 +45,7 @@
             }
         }
                 }
-            }
+            
 
         
         
