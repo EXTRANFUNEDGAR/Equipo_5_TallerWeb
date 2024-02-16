@@ -1,13 +1,13 @@
 <template>
   <div class="image-container">
     <div class="image-item">
-      <img src="ruta/a/tu/imagen.jpg" alt="Descripción de la imagen 1">
-      <p>Definición de la imagen 1</p>
+      <img src="../css/img/SupermanVsBatman.jpg" alt="Descripción de la imagen 1">
+      <p>Superman VS Batman</p>
     </div>
 
     <div class="image-item">
-      <img src="ruta/a/otra-imagen.jpg" alt="Descripción de la imagen 2">
-      <p>Definición de la imagen 2</p>
+      <img src="../css/img/Asesinos.jpg" alt="Descripción de la imagen 2">
+      <p>Asesinos</p>
     </div>
 
     <!-- Agrega más elementos image-item según sea necesario -->
