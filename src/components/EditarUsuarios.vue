@@ -1,53 +1,63 @@
 <template>
     <div>
-        Hola editar 
+      Hola editar 
     </div>
-    <div aling="center">
-    <form v-on:submit.prevent="actualizarRegistro">
+    <div align="center">
+      <form v-on:submit.prevent="actualizarRegistro">
         <div>
-            <label for="usuario">Usuario: </label><br>
-            <input type="text" name="usuario" v-model="usuario.usuario" id="usuario"><br>
-            
+          <label for="usuario">Usuario: </label><br>
+          <input type="text" name="usuario" v-model="usuario.usuario" id="usuario"><br>
         </div>
         <div>
-            <label for="contrasena">Contraseña: </label><br>
-            <input type="password" name="contrasena" v-model="usuario.contrasena" id="contrasena"><br>
-            
+          <label for="contrasena">Contraseña: </label><br>
+          <input type="password" name="contrasena" v-model="usuario.contrasena" id="contrasena"><br>
         </div>
         <div>
-            <button type="submit">Editar</button>
+          <button type="submit">Editar</button>
         </div>
-    </form>
-</div>
-</template>
-<script>
-    export default{
-        data(){
-            return{
-                usuario:{}
-            }
-            },
-            created:function(){
-
-                
-            },
-            methods:{
-                obtenerifois(){
-                    
-                fetch('http://localhost/atras/?consultar=').then(respuesta=>respuesta.json()).then((datosRespuesta)=>{
-                    console.log(datosRespuesta)
-                    this.usuarios=[]
-                    if(typeof datosRespuesta[0].success==='undefined'){
-                        this.usuarios = datosRespuesta[0];
-                    }
-                })
-                .catch(console.log)
-            }
-        }
-                }
-            
-
-        
-        
-    
-</script>
+      </form>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        usuario: {}
+      }
+    },
+    created() {
+      this.obtenerDatos();
+    },
+    methods: {
+      obtenerDatos() {
+        fetch('http://localhost/atras/?consultar=' + this.$route.params.id)
+          .then(respuesta => respuesta.json())
+          .then((datosRespuesta) => {
+            console.log(datosRespuesta);
+            this.usuario = datosRespuesta[0];
+          })
+          .catch(error => console.error('Error al obtener datos:', error));
+      },
+      actualizarRegistro() {
+        var datosEnviar = {
+          id: this.usuario.id,
+          usuario: this.usuario.usuario,
+          contrasena: this.usuario.contrasena
+        };
+  
+        fetch('http://localhost/atras/actualizar.php/' + this.$route.params.id, {
+            method: "POST",
+            body: JSON.stringify(datosEnviar)
+          })
+          .then(respuesta => respuesta.json())
+          .then((datosRespuesta) => {
+            console.log(datosRespuesta);
+            window.location.href = '/listar'; // Reemplazar '/' por la ruta correcta si es diferente
+          })
+          .catch(error => console.error('Error al actualizar registro:', error));
+      }
+    }
+  }
+  </script>
+  
