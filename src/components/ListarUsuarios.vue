@@ -27,7 +27,7 @@
                     <td>{{ usuario.contrasena }}</td>
                     <td>{{ usuario.rango }}</td>
                     <td>{{ usuario.status }}</td>
-                    <td><router-link to="/editar" class="btn">Editar</router-link></td>
+                    <td><router-link :to="{name:'Editar',params:{id:usuario.id_usuario}}" class="btn">Editar</router-link></td>
                     
                 </tr>
             </tbody>

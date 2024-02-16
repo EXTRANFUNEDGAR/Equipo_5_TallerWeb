@@ -2,7 +2,8 @@
     <div>
         Hola registro
     </div>
-    <form v-on:submit.prevent="agregarRegistro">
+    <div aling="center">
+    <form v-on:submit.prevent="agregarRegistro" >
         <div>
             <label for="usuario">Usuario: </label><br>
             <input type="text" name="usuario" v-model="usuario.usuario" id="usuario"><br>
@@ -17,7 +18,7 @@
             <button type="submit">Registar</button>
         </div>
     </form>
-   
+    </div>   
 
 
 </template>
