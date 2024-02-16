@@ -10,7 +10,7 @@
         </div>
         <div>
             <label for="contrasena">Contraseña: </label><br>
-            <input type="text" name="contrasena" v-model="usuario.contrasena" id="contrasena"><br>
+            <input type="password" name="contrasena" v-model="usuario.contrasena" id="contrasena"><br>
             
         </div>
         <div>
