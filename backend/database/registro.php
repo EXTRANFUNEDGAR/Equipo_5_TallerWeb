@@ -29,5 +29,6 @@ if ($contrasena != "" && $usuario != "") {
 }
 
 $conexionBD->close();
+
 exit();
 ?>
