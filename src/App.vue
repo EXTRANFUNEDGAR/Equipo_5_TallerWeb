@@ -7,8 +7,8 @@
     <router-link to="/about">About</router-link> 
     <router-link to="/registro">Registro</router-link> 
     <router-link to="/login">Login</router-link> 
-    <router-link to="/Listar">Listar</router-link> 
-    <router-link to="/editar">Editar</router-link> 
+    <router-link to="/Listar">Crud</router-link> 
+    
   </nav>
   <router-view />
 </template>

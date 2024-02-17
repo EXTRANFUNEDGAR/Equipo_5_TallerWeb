@@ -4,9 +4,9 @@ const cors = require('cors');
 const mysql = require('mysql');
 
 const app = express();
-const PORT = 3000; // Puerto en el que se ejecutará el servidor
+const PORT = 3000; 
 
-// Configuración de MySQL
+
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -21,11 +21,11 @@ db.connect(err => {
   console.log('Conectado a la base de datos MySQL');
 });
 
-// Middleware
+
 app.use(bodyParser.json());
 app.use(cors());
 
-// Ruta GET: Obtener todos los usuarios
+//Obtener
 app.get('/usuarios', (req, res) => {
   const sql = 'SELECT * FROM usuario';
   db.query(sql, (err, result) => {
@@ -37,7 +37,7 @@ app.get('/usuarios', (req, res) => {
   });
 });
 
-// Ruta POST: Insertar un nuevo usuario
+//Insertar
 app.post('/usuarios', (req, res) => {
   const { usuario, contrasena, rango, status } = req.body;
   const sql = `INSERT INTO usuario (usuario, contrasena, rango, status) VALUES (?, ?, ?, ?)`;
@@ -50,7 +50,7 @@ app.post('/usuarios', (req, res) => {
   });
 });
 
-// Ruta PUT: Actualizar un usuario existente
+//Actualizar
 app.put('/usuarios/:id_usuario', (req, res) => {
   const id_usuario = req.params.id_usuario;
   const { usuario, contrasena, rango, status } = req.body;
@@ -64,7 +64,7 @@ app.put('/usuarios/:id_usuario', (req, res) => {
   });
 });
 
-// Ruta DELETE: Eliminar un usuario
+//Eliminar
 app.delete('/usuarios/:id_usuario', (req, res) => {
   const id_usuario = req.params.id_usuario;
   const sql = `DELETE FROM usuario WHERE id_usuario=?`;
@@ -77,7 +77,7 @@ app.delete('/usuarios/:id_usuario', (req, res) => {
   });
 });
 
-// Iniciar el servidor
+
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en el puerto ${PORT}`);
 });

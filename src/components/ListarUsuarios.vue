@@ -1,4 +1,5 @@
 <template>
+    
     <div>
       <h2>Lista de Usuarios</h2>
       <table>
@@ -19,31 +20,56 @@
             <td>{{ usuario.rango }}</td>
             <td>
               <button @click="editarUsuario(usuario)">Editar</button>
+              <br>
               <button @click="eliminarUsuario(usuario.id_usuario)">Eliminar</button>
             </td>
           </tr>
         </tbody>
       </table>
-  
+
       <h2>{{ modoEdicion ? 'Editar Usuario' : 'Insertar Usuario' }}</h2>
-      <div>
-        <label for="usuario">Usuario:</label>
-        <input type="text" id="usuario" v-model="usuarioActual.usuario">
-      </div>
-      <div>
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" v-model="usuarioActual.contrasena">
-      </div>
-      <div>
-        <label for="rango">Rango:</label>
-        <input type="text" id="rango" v-model="usuarioActual.rango">
-      </div>
-      <div>
-        <label for="status">Estado:</label>
-        <input type="text" id="status" v-model="usuarioActual.status">
-      </div>
+  
+      <table>
+  <tr>
+    <td>
+      <label for="usuario">Usuario:</label>
+    </td>
+    <td>
+      <input type="text" id="usuario" v-model="usuarioActual.usuario">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="contrasena">Contraseña:</label>
+    </td>
+    <td>
+      <input type="password" id="contrasena" v-model="usuarioActual.contrasena">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="rango">Rango:</label>
+    </td>
+    <td>
+      <input type="text" id="rango" v-model="usuarioActual.rango">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="status">Estado:</label>
+    </td>
+    <td>
+      <input type="text" id="status" v-model="usuarioActual.status">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
       <button v-if="modoEdicion" @click="actualizarUsuario()">Guardar Cambios</button>
       <button v-else @click="insertarUsuario()">Insertar Usuario</button>
+    </td>
+  </tr>
+</table>
+
     </div>
   </template>
   
@@ -146,9 +172,46 @@
         }
       },
       limpiarFormulario() {
-        this.usuarioActual = { id_usuario: null, usuario: '', contrasena: '', rango: 'user', status: 1 }; // Restablecer valores por defecto
+        this.usuarioActual = { id_usuario: null, usuario: '', contrasena: '', rango: 'user', status: 1 }; 
       }
     }
   };
+  //import '../css/login.css';
   </script>
+
+<style scoped>
+.login-container {
+  font-family: 'Abadi', sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+form {
+  display: inline-block;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+</style>
+
   

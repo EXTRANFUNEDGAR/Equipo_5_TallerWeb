@@ -26,7 +26,7 @@
         </tr>
       </tbody>
     </table>
-
+<div aling="center">
     <h2>{{ modoEdicion ? 'Editar Usuario' : 'Insertar Usuario' }}</h2>
     <div>
       <label for="usuario">Usuario:</label>
@@ -51,6 +51,7 @@
       Insertar Usuario
     </button>
   </div>
+  </div>
 </template>
 
 <script>
@@ -67,7 +68,7 @@ export default {
   },
   methods: {
     obtenerUsuarios() {
-      fetch('http://localhost:3000/usuarios') // Cambiar la URL para que coincida con el backend Node.js
+      fetch('http://localhost:3000/usuarios') 
         .then(response => response.json())
         .then(data => {
           this.usuarios = data;
@@ -82,7 +83,7 @@ export default {
         status: this.usuarioActual.status || 1
       };
       if (nuevoUsuario.usuario && nuevoUsuario.contrasena) {
-        fetch('http://localhost:3000/usuarios', { // Cambiar la URL para que coincida con el backend Node.js
+        fetch('http://localhost:3000/usuarios', { 
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -114,7 +115,7 @@ export default {
       };
 
       if (usuarioActualizado.id_usuario && usuarioActualizado.usuario && usuarioActualizado.contrasena) {
-        fetch(`http://localhost:3000/usuarios/${usuarioActualizado.id_usuario}`, { // Cambiar la URL para que coincida con el backend Node.js
+        fetch(`http://localhost:3000/usuarios/${usuarioActualizado.id_usuario}`, { 
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -140,7 +141,7 @@ export default {
     },
     eliminarUsuario(id_usuario) {
       if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-        fetch(`http://localhost:3000/usuarios/${id_usuario}`, { // Cambiar la URL para que coincida con el backend Node.js
+        fetch(`http://localhost:3000/usuarios/${id_usuario}`, { 
           method: 'DELETE'
         })
         .then(response => response.json())
