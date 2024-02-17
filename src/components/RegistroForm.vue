@@ -30,7 +30,9 @@ export default {
       var datosEnviar = {
         usuario: this.usuario.usuario,
         contrasena: this.usuario.contrasena
+        
       };
+      
       fetch('http://localhost/atras/registro.php', {
           method: "POST",
           body: JSON.stringify(datosEnviar)

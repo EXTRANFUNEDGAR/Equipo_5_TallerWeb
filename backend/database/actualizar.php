@@ -14,11 +14,12 @@ $conexionBD = new mysqli($servidor, $usuariodb, $contrasenia, $nombreBaseDatos);
 
 $data = json_decode(file_get_contents("php://input"));
 
+//$id = isset($_POST["id"]) ? $_POST["id"] : null;
 $id = isset($_POST["id"]) ? $_POST["id"] : null;
 $usuario = $data->usuario;
 $contrasena = $data->contrasena;
 
-$sqlusuarios = mysqli_query($conexionBD, "UPDATE usuario SET usuario='$usuario',contrasena='$contrasena' WHERE id='$id'");
+$sqlusuarios = mysqli_query($conexionBD, "UPDATE usuario SET usuario='$usuario',contrasena='$contrasena' WHERE id_usuario='$id'");
 echo json_encode(["success" => 1]);
 exit();
 ?>

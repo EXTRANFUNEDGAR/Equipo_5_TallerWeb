@@ -31,7 +31,7 @@
     },
     methods: {
       obtenerDatos() {
-        fetch('http://localhost/atras/?consultar=' + this.$route.params.id)
+        fetch('http://localhost/atras/?consultar=1' + this.$route.params.id)
           .then(respuesta => respuesta.json())
           .then((datosRespuesta) => {
             console.log(datosRespuesta);
@@ -45,6 +45,7 @@
           usuario: this.usuario.usuario,
           contrasena: this.usuario.contrasena
         };
+        console.log(datosEnviar);
   
         fetch('http://localhost/atras/actualizar.php/' + this.$route.params.id, {
             method: "POST",
@@ -53,9 +54,10 @@
           .then(respuesta => respuesta.json())
           .then((datosRespuesta) => {
             console.log(datosRespuesta);
-            window.location.href = '/listar'; // Reemplazar '/' por la ruta correcta si es diferente
+            //window.location.href = 'listar'; // Reemplazar '/' por la ruta correcta si es diferente
           })
           .catch(error => console.error('Error al actualizar registro:', error));
+          console.log("si");
       }
     }
   }
