@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     obtenerUsuarios() {
-      fetch('http://localhost/atras/crud.php')
+      fetch('http://localhost:3000/usuarios') // Cambiar la URL para que coincida con el backend Node.js
         .then(response => response.json())
         .then(data => {
           this.usuarios = data;
@@ -82,7 +82,7 @@ export default {
         status: this.usuarioActual.status || 1
       };
       if (nuevoUsuario.usuario && nuevoUsuario.contrasena) {
-        fetch('http://localhost/atras/crud.php', {
+        fetch('http://localhost:3000/usuarios', { // Cambiar la URL para que coincida con el backend Node.js
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -98,7 +98,6 @@ export default {
         .catch(error => console.error('Error al insertar usuario:', error));
       } else {
         console.error('Por favor, proporcione usuario y contraseña');
-        
       }
     },
     editarUsuario(usuario) {
@@ -106,44 +105,42 @@ export default {
       this.modoEdicion = true;
     },
     actualizarUsuario() {
-  const usuarioActualizado = {
-    id_usuario: this.usuarioActual.id_usuario,
-    usuario: this.usuarioActual.usuario,
-    contrasena: this.usuarioActual.contrasena,
-    rango: this.usuarioActual.rango || 'user',
-    status: this.usuarioActual.status || 1
-  };
+      const usuarioActualizado = {
+        id_usuario: this.usuarioActual.id_usuario,
+        usuario: this.usuarioActual.usuario,
+        contrasena: this.usuarioActual.contrasena,
+        rango: this.usuarioActual.rango || 'user',
+        status: this.usuarioActual.status || 1
+      };
 
-  if (usuarioActualizado.id_usuario && usuarioActualizado.usuario && usuarioActualizado.contrasena) {
-    fetch(`http://localhost/atras/crud.php?id_usuario=${usuarioActualizado.id_usuario}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        usuario: usuarioActualizado.usuario,
-        contrasena: usuarioActualizado.contrasena,
-        rango: usuarioActualizado.rango,
-        status: usuarioActualizado.status
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Usuario actualizado correctamente:', data);
-      this.obtenerUsuarios();
-      this.limpiarFormulario();
-      this.modoEdicion = false;
-    })
-    .catch(error => console.error('Error al actualizar usuario:', error));
-  } else {
-    console.error('Por favor, proporcione todos los campos necesarios para actualizar el usuario');
-  }
-  console.log(usuarioActualizado)
-}
-,
+      if (usuarioActualizado.id_usuario && usuarioActualizado.usuario && usuarioActualizado.contrasena) {
+        fetch(`http://localhost:3000/usuarios/${usuarioActualizado.id_usuario}`, { // Cambiar la URL para que coincida con el backend Node.js
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            usuario: usuarioActualizado.usuario,
+            contrasena: usuarioActualizado.contrasena,
+            rango: usuarioActualizado.rango,
+            status: usuarioActualizado.status
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Usuario actualizado correctamente:', data);
+          this.obtenerUsuarios();
+          this.limpiarFormulario();
+          this.modoEdicion = false;
+        })
+        .catch(error => console.error('Error al actualizar usuario:', error));
+      } else {
+        console.error('Por favor, proporcione todos los campos necesarios para actualizar el usuario');
+      }
+    },
     eliminarUsuario(id_usuario) {
       if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-        fetch(`http://localhost/atras/crud.php?id_usuario=${id_usuario}`, {
+        fetch(`http://localhost:3000/usuarios/${id_usuario}`, { // Cambiar la URL para que coincida con el backend Node.js
           method: 'DELETE'
         })
         .then(response => response.json())
