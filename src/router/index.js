@@ -5,6 +5,7 @@ import Registro from '../components/RegistroForm.vue'
 import Editar from '../components/EditarUsuarios.vue'
 import Login from '../components/LoginForm.vue'
 import Listar from '../components/ListarUsuarios.vue'
+import Prueba from '../components/PruebaAc.vue'
 
 
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/listar',
     name: 'Listar',
     component: Listar
+  },
+  {
+    path: '/prueba',
+    name: 'prueba',
+    component: Prueba
   },
 
   {
