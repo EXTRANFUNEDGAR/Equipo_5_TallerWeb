@@ -13,13 +13,24 @@ $nombreBaseDatos = "app-mult";
 $conexionBD = new mysqli($servidor, $usuariodb, $contrasenia, $nombreBaseDatos);
 
 $data = json_decode(file_get_contents("php://input"));
-
-//$id = isset($_POST["id"]) ? $_POST["id"] : null;
 $id = isset($_POST["id"]) ? $_POST["id"] : null;
 $usuario = $data->usuario;
 $contrasena = $data->contrasena;
 
-$sqlusuarios = mysqli_query($conexionBD, "UPDATE usuario SET usuario='$usuario',contrasena='$contrasena' WHERE id_usuario='$id'");
-echo json_encode(["success" => 1]);
+if ($contrasena != "" && $usuario != "" && $id !="") {
+    //$sqlusuarios = "INSERT INTO usuario(usuario, contrasena, rango, status) VALUES ('$usuario','$contrasena','user','1')";
+    $sqlusuarios = "UPDATE `usuario` SET `usuario`='$usuario',`contrasena`='$contrasena' WHERE id_usuario = '$id'";
+
+
+    if ($conexionBD->query($sqlusuarios) === TRUE) {
+        echo json_encode(["success" => 1]);
+    } else {
+        echo json_encode(["error" => "Error al insertar usuario: " . $conexionBD->error]);
+    }
+} else {
+    echo json_encode(["error" => "Nombre de usuario y contraseña no pueden estar vacíos"]);
+}
+
+$conexionBD->close();
 exit();
 ?>
