@@ -4,9 +4,8 @@
   </header>
   <nav class="navbar" style="font-family: Abadi, Arial, sans-serif;">
     <router-link to="/">Inicio</router-link> 
-    <router-link to="/about">About</router-link> 
-    <router-link to="/registro">Registro</router-link> 
-    <router-link to="/login">Login</router-link> 
+    <router-link to="/registro">Inicio de Sesion</router-link> 
+  
     <router-link to="/Listar">Crud</router-link> 
     
   </nav>
@@ -14,7 +13,11 @@
 </template>
 
 <style>
-/* Estilos para el encabezado y la barra de navegación */
+/* Estilos para el encabezado y la barra de navegación
+
+    <router-link to="/about">About</router-link>
+  <router-link to="/login">Login</router-link> 
+*/
 header {
   background-color: #305472;
   color: white;
